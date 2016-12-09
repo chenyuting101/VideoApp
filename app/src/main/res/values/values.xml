@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="scroll" format="enum">
+        <enum name="right" value="1" />
+        <enum name="left" value="1" />
+    </attr>
+</resources>
