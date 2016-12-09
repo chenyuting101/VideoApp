@@ -137,6 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(getBaseContext(), MainActivity.class);
                     intent.putExtra("UserName", userName);
                     intent.putExtra("UserPassword", userPW);
+                    Log.d(TAG, userName);
                     startActivity(intent);
                 }
                 pdialog.hide();

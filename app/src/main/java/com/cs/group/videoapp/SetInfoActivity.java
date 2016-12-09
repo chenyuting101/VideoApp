@@ -14,7 +14,7 @@ import com.cs.group.tool.Parameter;
 
 public class SetInfoActivity extends AppCompatActivity {
 
-    private String TAG = "Video::SetInfoActivity";
+    private String TAG = "============Video::SetInfoActivity===========";
     private Intent mIntent;
     private int Activitycode;
 
@@ -29,23 +29,25 @@ public class SetInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState, persistentState);
         mIntent = getIntent();
         Activitycode = mIntent.getIntExtra(Parameter.SET, 0);
+//        Log.d(TAG,Activitycode + "");
         switch (Activitycode) {
             case Parameter.SET_GENDER:
-                setTitle("My new title");
-                getActionBar().setHomeButtonEnabled(true);
-                getActionBar().setDisplayHomeAsUpEnabled(true);
+//                Log.d(TAG,getSupportActionBar().toString());
+                getSupportActionBar().setTitle("My new title");
+                getSupportActionBar().setHomeButtonEnabled(true);
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                 setContentView(R.layout.set_gender_setinfoactivity);
 
                 break;
-            case Parameter.SET_NAME:
-                setContentView(R.layout.set_name_setinfoactivity);
-                break;
-            case Parameter.SET_ICON:
-                setContentView(R.layout.set_icon_setinfoactivity);
-                break;
-            case Parameter.SET_SLOGN:
-                setContentView(R.layout.set_slogn_setinfoactivity);
-                break;
+//            case Parameter.SET_NAME:
+//                setContentView(R.layout.set_name_setinfoactivity);
+//                break;
+//            case Parameter.SET_ICON:
+//                setContentView(R.layout.set_icon_setinfoactivity);
+//                break;
+//            case Parameter.SET_SLOGN:
+//                setContentView(R.layout.set_slogn_setinfoactivity);
+//                break;
         }
     }
 
