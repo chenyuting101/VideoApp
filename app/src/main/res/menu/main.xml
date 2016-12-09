@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/ic_home_white_48dp"
+        android:showAsAction="always" />
+    <item
+        android:id="@+id/action_customize"
+        android:icon="@drawable/ic_tune_white_48dp"
+        android:showAsAction="always"
+        android:title="@string/customize" />
+    <item
+        android:id="@+id/action_about"
+        android:icon="@drawable/ic_more_vert_white_48dp"
+        android:showAsAction="always" />
+
+</menu>

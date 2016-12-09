@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="matrix"
+        android:src="@drawable/santander2" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:clipToPadding="false"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+
+                android:id="@+id/layout_icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/user_icon"
+                    android:textColor="@color/white" />
+
+                <ImageView
+                    android:id="@+id/user_icon"
+                    android:layout_width="@dimen/image_personal"
+                    android:layout_height="@dimen/image_personal"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/icon_border"
+                    android:src="@drawable/ic_home_white_48dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+
+                android:id="@+id/layout_id"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/about_name">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_weight="0"
+                    android:text="@string/user_id"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/user_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_weight="1"
+                    android:clickable="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/about_name">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/user_name"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_gender"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/about_name">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/user_gender"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/user_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_slogn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/about_name">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/user_slogn"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/user_slogn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="true" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
