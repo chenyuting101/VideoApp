@@ -62,4 +62,20 @@ public class VideoTool {
         return video;
     }
 
+    public boolean deleteVideoById(String id)
+    {
+        NetTool netTool = new NetTool();
+        String requsetBody = Parameter.K_FUNCTION+"="+ Parameter.V_FUNCTION_DELETE_VIDEO_BY_ID+"&"+Parameter.K_ID+"="+id;
+        try {
+            String jsonStr = netTool.postRequest(Parameter.GET_VIDEO_URL, requsetBody);
+            //JSONObject jsonObject = new JSONObject(jsonStr);
+            System.out.println("requestBody"+requsetBody+"\nVideoTool deleteVideoById"+jsonStr);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
 }
