@@ -26,4 +26,11 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
+    compile 'com.tt:whorlviewlibrary:1.0.3'
+    compile 'com.jpardogo.listbuddies:library:1.1.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.android.support:design:25.0.1'
+
+    compile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
 }

@@ -15,5 +15,24 @@ public class Parameter {
     public static final String K_IMAGE_URI = "image_uri";
     public static final String K_VIDEO_URI = "video_uri";
 
+    public static final int SET_ICON = 1;
+    public static final int SET_NAME = 2;
+    public static final int SET_GENDER = 3;
+    public static final int SET_SLOGN = 4;
+    public static final String SET = "SET";
+
+    public static final String USERNAME = "NAME";
+    public static final String USERGENDER = "GENDER";
+    public static final String USERSLOGN = "SLOGN";
+    public static final String USERSICON = "ICON";
+    public static final String USERSID = "userid";
+
+    public static final int SUCCESSFUL = 1;
+    public static final int FAIL = 0;
+
+
+
+
+
 
 }
