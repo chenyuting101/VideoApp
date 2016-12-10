@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,12 @@ import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.cs.group.adapters.CircularAdapter;
+import com.cs.group.com.cs.group.entity.Video;
 import com.cs.group.provider.ExtraArgumentKeys;
 import com.cs.group.provider.ImagesUrls;
+import com.cs.group.tool.Parameter;
+import com.cs.group.tool.SharedPreferenceTool;
+import com.cs.group.tool.VideoTool;
 import com.cs.group.videoapp.R;
 import com.jpardogo.listbuddies.lib.views.ListBuddiesLayout;
 
@@ -22,7 +27,7 @@ import java.util.List;
 
 
 public class ListBuddiesFragment extends Fragment implements ListBuddiesLayout.OnBuddyItemClickListener {
-    private static final String TAG = ListBuddiesFragment.class.getSimpleName();
+    private static final String TAG = "VideoApp ::ListBuddiesFragment ";
     int mMarginDefault;
     ListBuddiesLayout mListBuddies;
     private CircularAdapter mAdapterLeft;
@@ -30,6 +35,8 @@ public class ListBuddiesFragment extends Fragment implements ListBuddiesLayout.O
     private FloatingActionButton mFAB;
     private List<String> mImagesLeft = new ArrayList<String>();
     private List<String> mImagesRight = new ArrayList<String>();
+    private ArrayList<Video> mVideo;
+    private VideoTool mVideoTool = new VideoTool();
 
     public static ListBuddiesFragment newInstance(boolean isOpenActivitiesActivated) {
         ListBuddiesFragment fragment = new ListBuddiesFragment();
@@ -43,6 +50,8 @@ public class ListBuddiesFragment extends Fragment implements ListBuddiesLayout.O
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mMarginDefault = getResources().getDimensionPixelSize(com.jpardogo.listbuddies.lib.R.dimen.default_margin_between_lists);
+//        url = mVideoTool.getVideoListByUsername(SharedPreferenceTool.read(Parameter.USERNAME,getActivity()));//(mUserName);
+
     }
 
     @Override
@@ -52,8 +61,17 @@ public class ListBuddiesFragment extends Fragment implements ListBuddiesLayout.O
 
         mListBuddies = (ListBuddiesLayout) rootView.findViewById(R.id.listbuddies);
         mFAB = (FloatingActionButton) rootView.findViewById(R.id.myFAB_upload);
+        String mUserName = SharedPreferenceTool.read(Parameter.K_USERNAMEM, getActivity());
 
-        mImagesLeft.addAll(Arrays.asList(ImagesUrls.imageUrls_left));
+        Log.d(TAG, mUserName);
+
+
+        ArrayList<Video> url = mVideoTool.getVideoListByUsername(mUserName);//(mUserName);
+        ArrayList<String> arrayList = new ArrayList<>();
+        for (int i = 0; i < url.size(); i++) {
+            arrayList.add(url.get(i).getImageUri());
+        }
+        mImagesLeft.addAll(arrayList);
         mImagesRight.addAll(Arrays.asList(ImagesUrls.imageUrls_right));
         mAdapterLeft = new CircularAdapter(getActivity(), getResources().getDimensionPixelSize(R.dimen.item_height_small), mImagesLeft);
         mAdapterRight = new CircularAdapter(getActivity(), getResources().getDimensionPixelSize(R.dimen.item_height_tall), mImagesRight);

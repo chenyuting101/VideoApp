@@ -15,17 +15,26 @@ import com.cs.group.Utils.SharePreferences;
 import com.cs.group.fragments.CustomizeFragment;
 import com.cs.group.fragments.ListBuddiesFragment;
 import com.cs.group.provider.FragmentTags;
+import com.cs.group.tool.Parameter;
+import com.cs.group.tool.SharedPreferenceTool;
+import com.cs.group.tool.VideoTool;
 
 
 public class MainActivity extends ActionBarActivity implements CustomizeFragment.OnCustomizeListener {
 
     private boolean isOpenActivitiesActivated = true;
-    private String TAG = "MainActivity :: ";
-
+    private String TAG = "MainActivity == ";
+    private Intent mIntent;
+    private String mUserName;
+    private VideoTool mVideoTool = new VideoTool();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mIntent = getIntent();
+        mUserName = mIntent.getStringExtra("UserName");
+        SharedPreferenceTool.write(Parameter.K_USERNAMEM, mUserName, this);
+        Log.d(TAG, SharedPreferenceTool.read(Parameter.K_USERNAMEM, this));
         if (savedInstanceState == null) {
             manageFragment(ListBuddiesFragment.newInstance(isOpenActivitiesActivated), FragmentTags.LIST_BUDDIES, false);
         }
