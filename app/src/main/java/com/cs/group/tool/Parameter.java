@@ -14,6 +14,15 @@ public class Parameter {
     public static final String K_ID = "id";
     public static final String K_IMAGE_URI = "image_uri";
     public static final String K_VIDEO_URI = "video_uri";
+    public static final String K_IS_UPLOAD = "isUpload";
+    public static final String V_UPLOAD = "1";
+    public static final String V_NOT_UPLOAD = "0";
+    public static final String K_IS_AUTO_UPLOAD = "isAutoUpload";
+    public static final String V_AUTO_UPLOAD = "1";
+    public static final String V_NOT_AUTO_UPLOAD = "0";
+
+
+
 
     public static final int SET_ICON = 1;
     public static final int SET_NAME = 2;
