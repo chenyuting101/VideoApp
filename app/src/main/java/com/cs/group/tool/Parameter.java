@@ -6,10 +6,14 @@ package com.cs.group.tool;
 
 public class Parameter {
     public static final String GET_VIDEO_URL = "http://i.cs.hku.hk/~ytchen/videophp/getVideo.php";
+    public static final String UPLOAD_VIDEO_URL = "http://i.cs.hku.hk/~ytchen/videophp/upload.php";
+    public static final String UPLOAD_IMAGE_URL = "http://i.cs.hku.hk/~ytchen/videophp/uploadImage.php";
+
     public static final String K_FUNCTION = "function";
     public static final String V_FUNCTION_GET_ALL_VIDEO = "0";
     public static final String V_FUNCTION_GET_VIDEO_BY_ID = "1";
     public static final String V_FUNCTION_DELETE_VIDEO_BY_ID = "2";
+    public static final String V_FUNCTION_INSERT_VIDEO = "3";
     public static final String K_USERNAMEM = "username";
     public static final String K_ID = "id";
     public static final String K_IMAGE_URI = "image_uri";
@@ -20,6 +24,7 @@ public class Parameter {
     public static final String K_IS_AUTO_UPLOAD = "isAutoUpload";
     public static final String V_AUTO_UPLOAD = "1";
     public static final String V_NOT_AUTO_UPLOAD = "0";
+    public static final String UPLOAD_SUCCESS = "successful";
 
 
 

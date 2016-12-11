@@ -23,8 +23,4 @@
     <dimen name="image_personal">90dp</dimen>
     <dimen name="about_name">60dp</dimen>
     <dimen name="about_next">10dp</dimen>
-
-
-    <!-- -->
-    <dimen name="image_size">300dp</dimen>
 </resources>

@@ -5,7 +5,9 @@ import com.cs.group.com.cs.group.entity.Video;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.sql.ParameterMetaData;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by chenyuting on 12/3/16.
@@ -23,7 +25,6 @@ public class VideoTool {
         String requsetBody = Parameter.K_FUNCTION+"="+ Parameter.V_FUNCTION_GET_ALL_VIDEO+"&"+Parameter.K_USERNAMEM+"="+username;
         try {
             String jsonStr = netTool.postRequest(Parameter.GET_VIDEO_URL, requsetBody);
-
             JSONArray ja = new JSONArray(jsonStr);
             for(int i=0;i<ja.length();i++){
                 Video video = new Video();
@@ -32,7 +33,6 @@ public class VideoTool {
                 video.setVideoUri(ja.getJSONObject(i).getString(Parameter.K_VIDEO_URI));
                 videoList.add(video);
             }
-            //System.out.println("======="+videoList.get(0).getImageUri());
             return videoList;
         } catch (Exception e) {
             e.printStackTrace();

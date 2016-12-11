@@ -3,6 +3,7 @@ package com.cs.group.tool;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.util.Log;
 
 /**
  * Created by chenyuting on 12/3/16.
@@ -10,6 +11,7 @@ import android.content.SharedPreferences.Editor;
 
 public class SharedPreferenceTool {
     private static String name = "Videoapp";
+    private static String TAG = "SharedPreferenceTool";
 
     /**
      * Add data to SharedPreferences
