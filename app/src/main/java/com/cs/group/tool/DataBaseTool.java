@@ -41,16 +41,66 @@ public class DataBaseTool {
     public ArrayList<Video> getUploadVideosByUsername(Context con, String username){
         SQLiteDatabase sqldb = con.openOrCreateDatabase(dataBaseName, con.MODE_PRIVATE, null);
         ArrayList<Video> videos = new ArrayList<Video>();
-        String colums = Parameter.K_ID+","+Parameter.K_IMAGE_URI+","+Parameter.K_VIDEO_URI;
+        //String[] colums = Parameter.K_ID+","+Parameter.K_IMAGE_URI+","+Parameter.K_VIDEO_URI;
+        String[] colums = {Parameter.K_ID, Parameter.K_IMAGE_URI, Parameter.K_VIDEO_URI};
         String whereClause = Parameter.K_USERNAMEM+"=? AND " + Parameter.K_IS_UPLOAD + "=?";
-        String whereArgs = username + ","+ Parameter.V_UPLOAD;
-        Cursor cur = sqldb.query(videoTableName,new String[] {colums},whereClause,new String[] {whereArgs},null,null,null);
+        //String whereArgs = username + ","+ Parameter.V_UPLOAD;
+        String[] whereArgs = {username, Parameter.V_UPLOAD};
+        Cursor cur = sqldb.query(videoTableName,colums,whereClause,whereArgs,null,null,null);
+        //System.out.println("\ngetUploadVideosByUsernamehere"+username);
         while(cur.moveToNext()){
             Video video = new Video();
             video.setId(cur.getString(0));
             video.setImageUri(cur.getString(1));
             video.setVideoUri(cur.getString(2));
-            System.out.println("id"+video.getId()+"image_uri"+video.getImageUri()+"video_uri"+video.getVideoUri());
+            System.out.println("\nGetUploadVideoByUsernameid:"+video.getId()+"image_uri:"+video.getImageUri()+"video_uri:"+video.getVideoUri());
+            videos.add(video);
+        }
+        sqldb.close();
+        cur.close();
+        return videos;
+    }
+
+    public ArrayList<Video> getUnUploadVideosByUsername(Context con, String username){
+        SQLiteDatabase sqldb = con.openOrCreateDatabase(dataBaseName, con.MODE_PRIVATE, null);
+        ArrayList<Video> videos = new ArrayList<Video>();
+        //String[] colums = Parameter.K_ID+","+Parameter.K_IMAGE_URI+","+Parameter.K_VIDEO_URI;
+        String[] colums = {Parameter.K_ID, Parameter.K_IMAGE_URI, Parameter.K_VIDEO_URI};
+        String whereClause = Parameter.K_USERNAMEM+"=? AND " + Parameter.K_IS_UPLOAD + "=?";
+        //String whereArgs = username + ","+ Parameter.V_UPLOAD;
+        String[] whereArgs = {username, Parameter.V_NOT_UPLOAD};
+        Cursor cur = sqldb.query(videoTableName,colums,whereClause,whereArgs,null,null,null);
+        //System.out.println("\ngetUploadVideosByUsernamehere"+username);
+        while(cur.moveToNext()){
+            Video video = new Video();
+            video.setId(cur.getString(0));
+            video.setImageUri(cur.getString(1));
+            video.setVideoUri(cur.getString(2));
+            System.out.println("\nGetUnUploadVideoByUsernameid:"+video.getId()+"image_uri:"+video.getImageUri()+"video_uri:"+video.getVideoUri());
+            videos.add(video);
+        }
+        sqldb.close();
+        cur.close();
+        return videos;
+    }
+
+    public ArrayList<Video> getAllUploadVideos(Context con){
+        SQLiteDatabase sqldb = con.openOrCreateDatabase(dataBaseName, con.MODE_PRIVATE, null);
+        ArrayList<Video> videos = new ArrayList<Video>();
+        //String[] colums = Parameter.K_ID+","+Parameter.K_IMAGE_URI+","+Parameter.K_VIDEO_URI;
+        String[] colums = {Parameter.K_ID, Parameter.K_USERNAMEM, Parameter.K_IMAGE_URI, Parameter.K_VIDEO_URI};
+        String whereClause = Parameter.K_IS_UPLOAD + "=?";
+        //String whereArgs = username + ","+ Parameter.V_UPLOAD;
+        String[] whereArgs = { Parameter.V_UPLOAD};
+        Cursor cur = sqldb.query(videoTableName,colums,whereClause,whereArgs,null,null,null);
+        //System.out.println("\ngetUploadVideosByUsernamehere"+username);
+        while(cur.moveToNext()){
+            Video video = new Video();
+            video.setId(cur.getString(0));
+            video.setUsername(cur.getString(1));
+            video.setImageUri(cur.getString(2));
+            video.setVideoUri(cur.getString(3));
+            System.out.println("\nGetUploadVideoByUsernameid:"+video.getId()+"username:"+video.getUsername()+"image_uri:"+video.getImageUri()+"video_uri:"+video.getVideoUri());
             videos.add(video);
         }
         sqldb.close();
@@ -61,6 +111,13 @@ public class DataBaseTool {
     public void deleteVideoById(Context con, String id){
         SQLiteDatabase sqldb = con.openOrCreateDatabase(dataBaseName, con.MODE_PRIVATE, null);
         int result = sqldb.delete(videoTableName, "id=?", new String[]{id});
+        sqldb.close();
+    }
+    public void updateVideoToUploadById(Context con, String id){
+        SQLiteDatabase sqldb = con.openOrCreateDatabase(dataBaseName, con.MODE_PRIVATE, null);
+        ContentValues cv =new ContentValues();
+        cv.put(Parameter.K_IS_UPLOAD, Parameter.V_UPLOAD);
+        int result = sqldb.update(videoTableName, cv, "id=?", new String[]{id});
         sqldb.close();
     }
 
