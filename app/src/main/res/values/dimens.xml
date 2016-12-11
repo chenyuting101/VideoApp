@@ -12,8 +12,6 @@
     <dimen name="standar_padding">8dp</dimen>
     <dimen name="standar_padding_small">4dp</dimen>
     <dimen name="spinner_width">100dp</dimen>
-
-    <dimen name="title_16dp">24dp</dimen>
     <dimen name="touchable_ui">@android:dimen/app_icon_size</dimen>
     <!--@android:dimen/navigation_bar_height(48dp)-->
     <dimen name="margin_top_customization_fragment">48dp</dimen>
@@ -23,4 +21,10 @@
     <dimen name="image_personal">90dp</dimen>
     <dimen name="about_name">60dp</dimen>
     <dimen name="about_next">10dp</dimen>
+
+    <dimen name="image_size">36dp</dimen>
+    <dimen name="uploading_list_cell_tv_size">15sp</dimen>
+    <dimen name="uploading_list_cell_im_width">40dp</dimen>
+    <dimen name="uploading_list_cell_im_height">50dp</dimen>
+    <dimen name="uploading_list_cell_im_margin">10dp</dimen>
 </resources>
