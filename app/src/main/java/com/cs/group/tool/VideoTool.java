@@ -1,19 +1,23 @@
 package com.cs.group.tool;
 
+import android.content.Context;
+import android.util.Log;
+
 import com.cs.group.com.cs.group.entity.Video;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
+import java.io.IOException;
 import java.sql.ParameterMetaData;
+
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by chenyuting on 12/3/16.
  */
 
 public class VideoTool {
+    private String TAG = "VideoTool";
     /**
      * get videos in the server by username
      * @param username
@@ -25,6 +29,7 @@ public class VideoTool {
         String requsetBody = Parameter.K_FUNCTION+"="+ Parameter.V_FUNCTION_GET_ALL_VIDEO+"&"+Parameter.K_USERNAMEM+"="+username;
         try {
             String jsonStr = netTool.postRequest(Parameter.GET_VIDEO_URL, requsetBody);
+
             JSONArray ja = new JSONArray(jsonStr);
             for(int i=0;i<ja.length();i++){
                 Video video = new Video();
@@ -33,6 +38,7 @@ public class VideoTool {
                 video.setVideoUri(ja.getJSONObject(i).getString(Parameter.K_VIDEO_URI));
                 videoList.add(video);
             }
+            //System.out.println("======="+videoList.get(0).getImageUri());
             return videoList;
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,6 +82,36 @@ public class VideoTool {
         }
 
         return false;
+    }
+
+    public boolean uploadVideo(Video video, Context con){
+        NetTool netTool = new NetTool();
+        DataBaseTool dataBaseTool = new DataBaseTool();
+        try {
+            String result = NetTool.uploadFile(Parameter.UPLOAD_VIDEO_URL, video.getVideoUri()).trim();
+            Log.d(TAG, result+Parameter.UPLOAD_SUCCESS);
+            if(result.equals(Parameter.UPLOAD_SUCCESS)){
+                result = NetTool.uploadFile(Parameter.UPLOAD_IMAGE_URL,video.getImageUri()).trim();
+                Log.d(TAG, result);
+                if(result.equals(Parameter.UPLOAD_SUCCESS)){
+                    String requsetBody = Parameter.K_FUNCTION+"="+ Parameter.V_FUNCTION_INSERT_VIDEO+"&"+Parameter.K_ID+"="+video.getId()
+                            +"&"+Parameter.K_USERNAMEM+"="+video.getUsername()+"&"+Parameter.K_VIDEO_URI+"="+video.getVideoUri()
+                            +"&"+Parameter.K_IMAGE_URI+"="+video.getImageUri();
+                    result = netTool.postRequest(Parameter.GET_VIDEO_URL, requsetBody).trim();
+                    Log.d(TAG, result);
+                    if(result.equals(Parameter.UPLOAD_SUCCESS)){
+                        dataBaseTool.deleteVideoById(con, video.getId());
+                    }else Log.d(TAG, "insert video failed");
+                }else Log.d(TAG, "upload image failed");
+
+            }else Log.d(TAG, "upload video failed");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return true;
     }
 
 }
