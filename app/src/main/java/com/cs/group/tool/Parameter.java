@@ -25,6 +25,8 @@ public class Parameter {
     public static final String V_AUTO_UPLOAD = "1";
     public static final String V_NOT_AUTO_UPLOAD = "0";
     public static final String UPLOAD_SUCCESS = "successful";
+    public static final String K_IMAGE_FILENAME = "imageFilename";
+    public static final String K_VIDEO_FILENAME = "videoFilename";
 
 
 
