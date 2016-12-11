@@ -12,6 +12,8 @@
     <dimen name="standar_padding">8dp</dimen>
     <dimen name="standar_padding_small">4dp</dimen>
     <dimen name="spinner_width">100dp</dimen>
+
+    <dimen name="title_16dp">24dp</dimen>
     <dimen name="touchable_ui">@android:dimen/app_icon_size</dimen>
     <!--@android:dimen/navigation_bar_height(48dp)-->
     <dimen name="margin_top_customization_fragment">48dp</dimen>

@@ -55,7 +55,7 @@ public class CircularAdapter extends CircularLoopAdapter {
         Picasso.with(mContext)
                 .load(getItem(position)).transform(new ScaleToFitWidhtHeigthTransform(mRowHeight, true))
                 .skipMemoryCache()
-                .error(R.drawable.ic_launcher)
+                .error(R.drawable.error)
                 .into(holder.image);
 
         return convertView;

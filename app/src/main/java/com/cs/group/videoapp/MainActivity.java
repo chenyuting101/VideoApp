@@ -31,10 +31,8 @@ public class MainActivity extends ActionBarActivity implements CustomizeFragment
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mIntent = getIntent();
-        mUserName = mIntent.getStringExtra("UserName");
-        SharedPreferenceTool.write(Parameter.K_USERNAMEM, mUserName, this);
-        Log.d(TAG, SharedPreferenceTool.read(Parameter.K_USERNAMEM, this));
+
+        mUserName = SharedPreferenceTool.read(Parameter.K_USERNAMEM, this);
         if (savedInstanceState == null) {
             manageFragment(ListBuddiesFragment.newInstance(isOpenActivitiesActivated), FragmentTags.LIST_BUDDIES, false);
         }
@@ -56,15 +54,18 @@ public class MainActivity extends ActionBarActivity implements CustomizeFragment
             case R.id.action_about:
                 startActivityWith(AboutActivity.class);
                 break;
-            case R.id.action_share:
-                startActivityWith(ShareActivity.class);
-                break;
+//            case R.id.action_delete:
+//                startActivityWith(DeleteActivity.class);
+//                setResult(RESULT_OK, null);
+//                finish();
+//                break;
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void startActivityWith(Class clazz) {
         Intent intent = new Intent(this, clazz);
+
         startActivity(intent);
     }
 
