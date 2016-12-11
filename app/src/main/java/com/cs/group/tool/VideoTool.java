@@ -94,9 +94,11 @@ public class VideoTool {
                 result = NetTool.uploadFile(Parameter.UPLOAD_IMAGE_URL,video.getImageUri()).trim();
                 Log.d(TAG, result);
                 if(result.equals(Parameter.UPLOAD_SUCCESS)){
+                    String imageFilename = video.getImageUri().substring(video.getImageUri().lastIndexOf("//") + 1);
+                    String videoFilename = video.getVideoUri().substring(video.getVideoUri().lastIndexOf("//") + 1);
                     String requsetBody = Parameter.K_FUNCTION+"="+ Parameter.V_FUNCTION_INSERT_VIDEO+"&"+Parameter.K_ID+"="+video.getId()
-                            +"&"+Parameter.K_USERNAMEM+"="+video.getUsername()+"&"+Parameter.K_VIDEO_URI+"="+video.getVideoUri()
-                            +"&"+Parameter.K_IMAGE_URI+"="+video.getImageUri();
+                            +"&"+Parameter.K_USERNAMEM+"="+video.getUsername()+"&"+Parameter.K_VIDEO_FILENAME+"="+videoFilename
+                            +"&"+Parameter.K_IMAGE_FILENAME+"="+imageFilename;
                     result = netTool.postRequest(Parameter.GET_VIDEO_URL, requsetBody).trim();
                     Log.d(TAG, result);
                     if(result.equals(Parameter.UPLOAD_SUCCESS)){
