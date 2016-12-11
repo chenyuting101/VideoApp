@@ -2,11 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.cs.group.videoapp">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <!-- Permission to write to external storage -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:name=".ListBuddies"
         android:allowBackup="true"
@@ -14,64 +21,89 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-
         tools:replace="android:icon">
         <activity
             android:name=".MainActivity"
             android:label=" ">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+
+             <intent-filter>
+             <action android:name="android.intent.action.MAIN" />
+
+
+             <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+        </activity>
+        <activity
+            android:name=".AboutActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+
+        </activity>
+        <activity
+            android:name=".ShareActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+
+        </activity>
+        <activity
+            android:name=".SetInfoActivity"
+            android:theme="@style/Theme.AppCompat">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+
+        </activity>
+        <activity android:name=".VideoCaptureActivity" />
+        <activity android:name=".Main2Activity">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
 
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
-        <activity
-            android:name=".LoginActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        <activity android:name=".UnUploadVideosActivity"></activity>
+
+        <service android:name="com.cs.group.tool.VideoUploadService">
             <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="com.cs.group.tool.VideoUploadService" />
             </intent-filter>
-
-        </activity>
-        <activity
-            android:name=".AboutActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
-
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-
-        </activity>
-        <activity
-            android:name=".ShareActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
-
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-
-        </activity>
-        <activity
-            android:name=".SetInfoActivity"
-            android:theme="@style/Theme.AppCompat">
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
-
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-
-        </activity>
-        <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        </service>
+        <!--
+     ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-    </application>
 
+    </application>
 
 </manifest>
