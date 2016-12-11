@@ -9,6 +9,16 @@ public class Video {
     private String videoUri;
     private String id;
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    private String username;
+
     public String getImageUri() {
         return imageUri;
     }
@@ -32,4 +42,5 @@ public class Video {
     public void setVideoUri(String videoUri) {
         this.videoUri = videoUri;
     }
+
 }
