@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="matrix"
-        android:src="@drawable/santander2" />
+        android:src="@drawable/pixar" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -35,7 +35,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="@string/user_icon"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/user_icon"
@@ -43,7 +44,7 @@
                     android:layout_height="@dimen/image_personal"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/icon_border"
-                    android:src="@drawable/ic_home_white_48dp" />
+                    android:src="@drawable/user_icon" />
 
             </RelativeLayout>
 
@@ -59,7 +60,8 @@
                     android:layout_centerVertical="true"
                     android:layout_weight="0"
                     android:text="@string/user_id"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/user_id"
@@ -68,7 +70,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_weight="1"
-                    android:clickable="true" />
+                    android:clickable="true"
+                    android:textColor="@color/white" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -81,7 +84,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="@string/user_name"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/user_name"
@@ -89,7 +93,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:clickable="true" />
+                    android:clickable="true"
+                    android:textColor="@color/white" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -102,7 +107,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="@string/user_gender"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/user_gender"
@@ -110,7 +116,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:clickable="true" />
+                    android:clickable="true"
+                    android:textColor="@color/white" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -119,14 +126,48 @@
                 android:layout_height="@dimen/about_name">
 
                 <TextView
+                    android:id="@+id/slogn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:text="@string/user_slogn"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/user_slogn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_toRightOf="@+id/slogn"
+                    android:clickable="true"
+                    android:ellipsize="end"
+                    android:text="@string/user_slogn_text"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <RelativeLayout
+                android:id="@+id/layout_switch"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/about_name">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/user_switch"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/user_is_update"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"

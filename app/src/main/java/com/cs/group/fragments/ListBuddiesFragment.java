@@ -35,6 +35,8 @@ public class ListBuddiesFragment extends Fragment implements ListBuddiesLayout.O
     private FloatingActionButton mFAB;
     private List<String> mImagesLeft = new ArrayList<String>();
     private List<String> mImagesRight = new ArrayList<String>();
+    private List<String> mVideoLeft = new ArrayList<String>();
+    private List<String> mVideoRight = new ArrayList<String>();
     private ArrayList<Video> mVideo;
     private VideoTool mVideoTool = new VideoTool();
 
@@ -66,13 +68,23 @@ public class ListBuddiesFragment extends Fragment implements ListBuddiesLayout.O
         Log.d(TAG, mUserName);
 
 
-        ArrayList<Video> url = mVideoTool.getVideoListByUsername(mUserName);//(mUserName);
-        ArrayList<String> arrayList = new ArrayList<>();
-        for (int i = 0; i < url.size(); i++) {
-            arrayList.add(url.get(i).getImageUri());
+        ArrayList<Video> videoList = mVideoTool.getVideoListByUsername(mUserName);//(mUserName);
+        ArrayList<String> videoImageArrayList = new ArrayList<>();
+        ArrayList<String> videoArrayList = new ArrayList<>();
+        for (int i = 0; i < videoList.size(); i++) {
+            videoImageArrayList.add(videoList.get(i).getImageUri());
+            videoArrayList.add(videoList.get(i).getVideoUri());
         }
-        mImagesLeft.addAll(arrayList);
-        mImagesRight.addAll(Arrays.asList(ImagesUrls.imageUrls_right));
+        if (videoList.size() < 6) {
+            videoImageArrayList.addAll(Arrays.asList(ImagesUrls.imageUrls_right));
+            videoArrayList.addAll(Arrays.asList(ImagesUrls.imageUrls_right));
+        }
+
+        mImagesLeft.addAll(videoImageArrayList.subList(0, videoImageArrayList.size() / 2));
+        mImagesRight.addAll(videoImageArrayList.subList(videoImageArrayList.size() / 2, videoImageArrayList.size()));
+        mVideoLeft.addAll(videoArrayList.subList(0, videoArrayList.size() / 2));
+        mVideoRight.addAll(videoArrayList.subList(videoArrayList.size() / 2, videoArrayList.size()));
+
         mAdapterLeft = new CircularAdapter(getActivity(), getResources().getDimensionPixelSize(R.dimen.item_height_small), mImagesLeft);
         mAdapterRight = new CircularAdapter(getActivity(), getResources().getDimensionPixelSize(R.dimen.item_height_tall), mImagesRight);
         mListBuddies.setAdapters(mAdapterLeft, mAdapterRight);
@@ -84,7 +96,7 @@ public class ListBuddiesFragment extends Fragment implements ListBuddiesLayout.O
             @Override
             public void onClick(View view) {
                 Resources resources = getResources();
-                Toast.makeText(getActivity(), resources.getString(R.string.list) + ": action floating button", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), resources.getString(R.string.list) + ": " + " " + resources.getString(R.string.position) + ": " + view.getId(), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -93,16 +105,19 @@ public class ListBuddiesFragment extends Fragment implements ListBuddiesLayout.O
         return rootView;
     }
 
+    //get video image uri
     @Override
     public void onBuddyItemClicked(AdapterView<?> parent, View view, int buddy, int position, long id) {
 
         Resources resources = getResources();
-        Toast.makeText(getActivity(), resources.getString(R.string.list) + ": " + buddy + " " + resources.getString(R.string.position) + ": " + position, Toast.LENGTH_SHORT).show();
+        String videoUri = getImage(buddy, position);
+        Log.d(TAG, "videoUri" + videoUri);
+
 
     }
 
     private String getImage(int buddy, int position) {
-        return buddy == 0 ? ImagesUrls.imageUrls_left[position] : ImagesUrls.imageUrls_right[position];
+        return buddy == 0 ? mVideoLeft.get(position) : mVideoRight.get(position);
     }
 
     public void setGap(int value) {

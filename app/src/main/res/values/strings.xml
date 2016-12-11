@@ -27,6 +27,16 @@
     <string name="user_icon">Icon</string>
     <string name="user_slogn">Slogn</string>
     <string name="user_gender">Gender</string>
+    <string name="user_switch">IsAutoUpdate</string>
+    <string name="user_slogn_text"> Chim Tat Wing is soooooo Cute!!! I love  Chim Tat Wing !!!</string>
+    <string name="user_gender_text"> Male / Female </string>
+    <string name="user_name_text"> HKU </string>
+    <string name="cancel"> Cancel </string>
+    <string name="save"> Save </string>
 
+    <!--welcome -->
+    <string name="welcome">Welcome</string>
+    <string name="welcome_gallery">Gallery</string>
+    <string name="welcome_video">Video</string>
 </resources>
 
