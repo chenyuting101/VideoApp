@@ -9,12 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.cs.group.adapters.CircularAdapter;
 import com.cs.group.com.cs.group.entity.Video;
 import com.cs.group.provider.ExtraArgumentKeys;
-import com.cs.group.provider.ImagesUrls;
 import com.cs.group.tool.Parameter;
 import com.cs.group.tool.SharedPreferenceTool;
 import com.cs.group.tool.VideoTool;
@@ -22,7 +20,6 @@ import com.cs.group.videoapp.R;
 import com.jpardogo.listbuddies.lib.views.ListBuddiesLayout;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -75,10 +72,10 @@ public class ListBuddiesFragment extends Fragment implements ListBuddiesLayout.O
             videoImageArrayList.add(videoList.get(i).getImageUri());
             videoArrayList.add(videoList.get(i).getVideoUri());
         }
-        if (videoList.size() < 6) {
-            videoImageArrayList.addAll(Arrays.asList(ImagesUrls.imageUrls_right));
-            videoArrayList.addAll(Arrays.asList(ImagesUrls.imageUrls_right));
-        }
+//        if (videoList.size() < 6) {
+//            videoImageArrayList.addAll(Arrays.asList(ImagesUrls.imageUrls_right));
+//            videoArrayList.addAll(Arrays.asList(ImagesUrls.imageUrls_right));
+//        }
 
         mImagesLeft.addAll(videoImageArrayList.subList(0, videoImageArrayList.size() / 2));
         mImagesRight.addAll(videoImageArrayList.subList(videoImageArrayList.size() / 2, videoImageArrayList.size()));
@@ -86,7 +83,7 @@ public class ListBuddiesFragment extends Fragment implements ListBuddiesLayout.O
         mVideoRight.addAll(videoArrayList.subList(videoArrayList.size() / 2, videoArrayList.size()));
 
         mAdapterLeft = new CircularAdapter(getActivity(), getResources().getDimensionPixelSize(R.dimen.item_height_small), mImagesLeft);
-        mAdapterRight = new CircularAdapter(getActivity(), getResources().getDimensionPixelSize(R.dimen.item_height_tall), mImagesRight);
+        mAdapterRight = new CircularAdapter(getActivity(), getResources().getDimensionPixelSize(R.dimen.item_height_tall), mImagesLeft);
         mListBuddies.setAdapters(mAdapterLeft, mAdapterRight);
         mListBuddies.setSpeed(ListBuddiesLayout.DEFAULT_SPEED);
         mListBuddies.setOnItemClickListener(this);
@@ -96,7 +93,6 @@ public class ListBuddiesFragment extends Fragment implements ListBuddiesLayout.O
             @Override
             public void onClick(View view) {
                 Resources resources = getResources();
-                Toast.makeText(getActivity(), resources.getString(R.string.list) + ": " + " " + resources.getString(R.string.position) + ": " + view.getId(), Toast.LENGTH_SHORT).show();
 
             }
         });

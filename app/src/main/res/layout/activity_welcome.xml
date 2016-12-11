@@ -22,23 +22,56 @@
         android:gravity="center"
         android:textColor="@color/white" />
 
-    <TextView
-        android:id="@+id/tv_gallery"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:gravity="center"
-        android:text="@string/welcome_gallery"
-        android:textColor="@color/white" />
+        android:layout_height="1dp"
+        android:background="@color/white" />
 
-    <TextView
-        android:id="@+id/tv_video"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6"
-        android:gravity="center"
-        android:text="@string/welcome_video"
-        android:textColor="@color/white" />
+        android:layout_weight="5"
+        android:gravity="center_vertical|center_horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/title_16dp"
+            android:layout_height="@dimen/title_16dp"
+            android:src="@drawable/ic_insert_photo_white_48dp" />
+
+        <TextView
+            android:id="@+id/tv_gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_gallery"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_16dp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:gravity="center_vertical|center_horizontal|top">
+
+        <ImageView
+            android:layout_width="@dimen/title_16dp"
+            android:layout_height="@dimen/title_16dp"
+            android:src="@drawable/ic_linked_camera_white_48dp" />
+
+        <TextView
+            android:id="@+id/tv_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/welcome_video"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_16dp" />
+
+    </LinearLayout>
 
 
 </LinearLayout>

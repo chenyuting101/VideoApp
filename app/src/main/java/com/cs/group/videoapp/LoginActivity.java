@@ -12,6 +12,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.cs.group.tool.DataBaseTool;
+import com.cs.group.tool.Parameter;
+import com.cs.group.tool.SharedPreferenceTool;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.CookieHandler;
@@ -64,7 +68,9 @@ public class LoginActivity extends AppCompatActivity {
                 if (view.getId() == R.id.login) {
                     String uname = mEvUserName.getText().toString();
                     String upassword = mEvUserPW.getText().toString();
-
+                    // TODO: 10/12/2016
+                    //for test
+                    uname = "ytchen";
                     connect(uname, upassword);
                 }
             }
@@ -127,18 +133,32 @@ public class LoginActivity extends AppCompatActivity {
             protected void onPostExecute(String result) {
                 if (success) {
                     Log.d(TAG, "Success");
-                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                    intent.putExtra("UserName", userName);
-                    intent.putExtra("UserPassword", userPW);
-                    startActivity(intent);
+                    String isAutoUpdate = SharedPreferenceTool.read(Parameter.K_IS_AUTO_UPLOAD, getApplicationContext());
+                    Log.d(TAG, isAutoUpdate);
+                    if (isAutoUpdate.length() == 0) {
+                        SharedPreferenceTool.write(Parameter.K_IS_AUTO_UPLOAD, Parameter.V_AUTO_UPLOAD, getApplicationContext());
+                    }
+                    Log.d(TAG, "AFTER" + SharedPreferenceTool.read(Parameter.K_IS_AUTO_UPLOAD, getApplicationContext()));
+                    DataBaseTool dataBaseTool = new DataBaseTool();
+                    dataBaseTool.initiateDataBase(getApplicationContext());
+                    SharedPreferenceTool.write(Parameter.K_USERNAMEM, userName, getApplicationContext());
+                    startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
+
                 } else {
-//                    alert( "Error", "Fail to login" );
+                    alert("Error", "Fail to login");
                     Log.d(TAG, "Fail");
-                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                    intent.putExtra("UserName", userName);
-                    intent.putExtra("UserPassword", userPW);
+                    String isAutoUpdate = SharedPreferenceTool.read(Parameter.K_IS_AUTO_UPLOAD, getApplicationContext());
+                    Log.d(TAG, isAutoUpdate);
+                    if (isAutoUpdate.length() == 0) {
+                        SharedPreferenceTool.write(Parameter.K_IS_AUTO_UPLOAD, Parameter.V_AUTO_UPLOAD, getApplicationContext());
+                    }
+                    Log.d(TAG, "AFTER" + SharedPreferenceTool.read(Parameter.K_IS_AUTO_UPLOAD, getApplicationContext()));
+                    DataBaseTool dataBaseTool = new DataBaseTool();
+                    dataBaseTool.initiateDataBase(getApplicationContext());
+                    SharedPreferenceTool.write(Parameter.K_USERNAMEM, userName, getApplicationContext());
+//
                     Log.d(TAG, userName);
-                    startActivity(intent);
+                    startActivity(new Intent(getApplicationContext(), WelcomeActivity.class));
                 }
                 pdialog.hide();
             }
