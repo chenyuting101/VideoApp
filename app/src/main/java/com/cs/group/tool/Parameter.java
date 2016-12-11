@@ -29,6 +29,8 @@ public class Parameter {
     public static final int SET_GENDER = 3;
     public static final int SET_SLOGN = 4;
     public static final String SET = "SET";
+    public static final String PRE = "PRE";
+
 
     public static final String USERNAME = "NAME";
     public static final String USERGENDER = "GENDER";
